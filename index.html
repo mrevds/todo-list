@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO LIST (mrevds)</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="https://i.pinimg.com/564x/af/05/3f/af053fb75a1f4cf3ce2a58c5e30afa13.jpg"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="newtask">
+        <input type="text" placeholder="Таски для выполнения..." />
+        <button id="push">Добавить</button>
+      </div>
+      <div id="tasks"></div>
+    </div>
+    <script type="text/javascript">
+      document.querySelector("#push").onclick = function () {
+        if (document.querySelector("#newtask input").value.length == 0) {
+          alert("Введите пожалуйста таск");
+        } else {
+          document.querySelector("#tasks").innerHTML += `
+                <div class='task'>
+                    <span class='taskname'>
+                        ${document.querySelector("#newtask input").value}
+                    </span>    
+                    <button class='delete'>
+                    <i class='far fa-trash-alt'></i>    
+                    </button>
+                </div> `;
+          var current_task = document.querySelectorAll(".delete");
+          for (var i = 0; i < current_task.length; i++) {
+            current_task[i].onclick = function () {
+              this.parentNode.remove();
+            };
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
